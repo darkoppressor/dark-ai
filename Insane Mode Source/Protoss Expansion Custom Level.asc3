@@ -1,0 +1,887 @@
+;Created By Dark_Oppressor
+script_name Protoss Expansion Custom Level
+script_id PMCx
+
+start_town
+groundmap_jump groundmap
+goto airmap
+:groundmap
+transports_off
+:airmap
+farms_notiming
+
+define_max 21 probe
+define_max 100 zealot
+define_max 100 dragoon
+define_max 50 reaver
+define_max 66 scout
+define_max 100 shuttle
+define_max 33 carrier
+define_max 100 observer
+define_max 100 corsair
+define_max 100 high_templar
+define_max 50 dark_archon
+define_max 50 archon
+define_max 50 arbiter
+define_max 100 dark_templar
+
+give_money
+
+build 1 nexus 150
+wait_build 1 nexus
+build 4 probe 130
+wait_build 4 probe
+
+multirun m_myfunding
+multirun r_roboticsupgrades
+multirun r_groundupgrades
+multirun r_cybupgrades
+multirun r_observerupgrades
+multirun r_templarupgrades
+multirun r_airupgrades
+
+build 5 probe 80
+wait_buildstart 5 probe
+build 6 probe 80
+wait_buildstart 6 probe
+build 1 pylon 80
+wait_buildstart 1 pylon
+build 7 probe 80
+wait_buildstart 7 probe
+build 8 probe 80
+wait_buildstart 8 probe
+
+goto b_gateway
+:a_gateway
+
+farms_timing
+
+build 9 probe 80
+wait_buildstart 9 probe
+build 10 probe 80
+wait_buildstart 10 probe
+build 1 assimilator 80
+wait_buildstart 1 assimilator
+
+give_money
+goto b_forge
+:a_forge
+
+give_money
+build 11 probe 80
+wait_buildstart 11 probe
+
+multirun m_rushcheck
+
+goto b_startdefenseblock
+:a_startdefenseblock
+
+give_money
+build 14 probe 80
+wait_buildstart 14 probe
+
+give_money
+build 5 pylon 80
+wait_buildstart 5 pylon
+goto b_cybernetics
+:a_cybernetics
+
+give_money
+build 16 probe 80
+wait_buildstart 16 probe
+
+build 7 pylon 80
+wait_buildstart 7 pylon
+
+give_money
+build 9 pylon 80
+wait_buildstart 9 pylon
+
+multirun m_rushcheck
+
+give_money
+goto b_robotics0
+:a_robotics0
+
+give_money
+build 11 pylon 80
+wait_buildstart 11 pylon
+goto b_cannon0
+:a_cannon0
+
+build 13 pylon 80
+wait_buildstart 13 pylon
+goto b_templar
+:a_templar
+
+multirun m_rushcheck
+
+build 15 pylon 80
+wait_buildstart 15 pylon
+
+give_money
+build 17 pylon 80
+wait_buildstart 17 pylon
+goto b_robotics1
+:a_robotics1
+
+goto b_finaldefenseblock
+:a_finaldefenseblock
+
+give_money
+build 19 pylon 80
+wait_buildstart 19 pylon
+goto b_fleet
+:a_fleet
+
+multirun m_rushcheck
+
+build 21 pylon 80
+wait_buildstart 21 pylon
+
+give_money
+expand 1 expacode
+
+give_money
+build 24 pylon 80
+wait_buildstart 24 pylon
+goto b_arbiter
+:a_arbiter
+
+multirun m_rushcheck
+
+give_money
+goto b_robotics2
+:a_robotics2
+
+give_money
+goto b_cannon1
+:a_cannon1
+
+:repeatmain
+send_suicide 0
+
+give_money
+multirun m_bigattackcheck
+wait 3800
+
+goto repeatmain
+
+; >> GATEWAY SCRIPT PART
+:b_gateway
+wait_build 1 pylon
+give_money
+build 1 gateway 80
+wait_buildstart 1 gateway
+build 2 pylon 80
+wait_buildstart 2 pylon
+build 3 gateway 80
+wait_buildstart 3 gateway
+goto a_gateway
+
+; >> FORGE SCRIPT PART
+:b_forge
+wait_build 1 pylon
+give_money
+build 3 forge 80
+wait_buildstart 3 forge
+goto a_forge
+
+; >> PHOTON CANNON 0 SCRIPT PART
+:b_cannon0
+wait_build 1 forge
+give_money
+build 2 photon_cannon 80
+wait_buildstart 2 photon_cannon
+goto a_cannon0
+
+; >> CYBERNETICS CORE SCRIPT PART
+:b_cybernetics
+wait_build 1 gateway
+give_money
+build 2 cybernetics_core 80
+wait_buildstart 2 cybernetics_core
+build 4 gateway 80
+wait_buildstart 4 gateway
+goto a_cybernetics
+
+; >> ROBOTICS 0 SCRIPT PART
+:b_robotics0
+wait_build 1 cybernetics_core
+give_money
+build 1 robotics_facility 80
+wait_buildstart 1 robotics_facility
+goto a_robotics0
+
+; >> ROBOTICS 1 SCRIPT PART
+:b_robotics1
+wait_build 1 robotics_facility
+give_money
+build 1 robotics_support_bay 80
+wait_buildstart 1 robotics_support_bay
+build 1 observatory 80
+wait_buildstart 1 observatory
+build 2 robotics_facility 80
+wait_buildstart 2 robotics_facility
+goto a_robotics1
+
+; >> ROBOTICS 2 SCRIPT PART
+:b_robotics2
+wait_build 1 robotics_facility
+give_money
+build 4 robotics_facility 80
+wait_buildstart 4 robotics_facility
+goto a_robotics2
+
+; >> FLEET SCRIPT PART
+:b_fleet
+wait_build 1 cybernetics_core
+give_money
+build 1 stargate 80
+wait_build 1 stargate
+build 1 fleet_beacon 80
+wait_buildstart 1 fleet_beacon
+build 3 stargate 80
+wait_buildstart 3 stargate
+goto a_fleet
+
+; >> TEMPLAR SCRIPT PART
+:b_templar
+wait_build 1 cybernetics_core
+give_money
+build 1 citadel_of_adun 80
+wait_build 1 citadel_of_adun
+build 1 templar_archives 80
+wait_buildstart 1 templar_archives
+build 5 gateway 80
+wait_buildstart 5 gateway
+goto a_templar
+
+; >> ARBITER SCRIPT PART
+:b_arbiter
+wait_build 1 stargate
+wait_build 1 templar_archives
+give_money
+build 1 arbiter_tribunal 80
+wait_buildstart 1 arbiter_tribunal
+build 5 stargate 80
+wait_buildstart 5 stargate
+wait_build 1 arbiter_tribunal
+place_guard arbiter 0
+train 1 arbiter
+build 6 stargate 80
+wait_buildstart 6 stargate
+goto a_arbiter
+
+; >> PHOTON CANNON 1 SCRIPT PART
+:b_cannon1
+wait_build 1 forge
+give_money
+build 5 photon_cannon 80
+wait_buildstart 5 photon_cannon
+goto a_cannon1
+
+; >> GATEWAY SCRIPT PART
+:b_gatewayex
+wait_build 1 pylon
+give_money
+build 1 gateway 50
+wait_buildstart 1 gateway
+build 2 pylon 50
+wait_buildstart 2 pylon
+goto a_gatewayex
+
+; >> FORGE SCRIPT PART
+:b_forgeex
+wait_build 1 pylon
+give_money
+build 1 forge 50
+wait_buildstart 1 forge
+goto a_forgeex
+
+; >> PHOTON CANNON 0 SCRIPT PART
+:b_cannon0ex
+wait_build 1 forge
+give_money
+build 2 photon_cannon 50
+wait_buildstart 2 photon_cannon
+goto a_cannon0ex
+
+; >> CYBERNETICS CORE SCRIPT PART
+:b_cyberneticsex
+wait_build 1 gateway
+give_money
+build 1 cybernetics_core 50
+wait_buildstart 1 cybernetics_core
+goto a_cyberneticsex
+
+; >> ROBOTICS 0 SCRIPT PART
+:b_robotics0ex
+wait_build 1 cybernetics_core
+give_money
+build 1 robotics_facility 50
+wait_buildstart 1 robotics_facility
+goto a_robotics0ex
+
+; >> ROBOTICS 1 SCRIPT PART
+:b_robotics1ex
+wait_build 1 robotics_facility
+give_money
+build 1 robotics_support_bay 50
+wait_buildstart 1 robotics_support_bay
+build 1 observatory 50
+wait_buildstart 1 observatory
+goto a_robotics1ex
+
+; >> FLEET SCRIPT PART
+:b_fleetex
+wait_build 1 cybernetics_core
+give_money
+build 4 stargate 50
+wait_buildstart 4 stargate
+build 1 fleet_beacon 50
+wait_buildstart 1 fleet_beacon
+goto a_fleetex
+
+; >> TEMPLAR SCRIPT PART
+:b_templarex
+wait_build 1 cybernetics_core
+give_money
+build 1 citadel_of_adun 50
+wait_buildstart 1 citadel_of_adun
+build 1 templar_archives 50
+wait_buildstart 1 templar_archives
+goto a_templarex
+
+; >> ARBITER SCRIPT PART
+:b_arbiterex
+wait_build 1 stargate
+wait_build 1 templar_archives
+give_money
+build 1 arbiter_tribunal 50
+wait_buildstart 1 arbiter_tribunal
+goto a_arbiterex
+
+; >> ZEALOT RUSH SCRIPT PART
+:b_zealotrush
+wait_build 1 gateway
+give_money
+train 7 zealot
+attack_add 7 zealot
+attack_prepare
+attack_do
+attack_clear
+goto a_zealotrush
+
+; >> OBSERVER RUSH SCRIPT PART
+:b_observerrush
+wait_build 1 robotics_facility
+wait_build 1 observatory
+give_money
+train 1 observer
+attack_add 1 observer
+attack_prepare
+attack_do
+attack_clear
+goto a_observerrush
+
+; >> DRAGOON RUSH SCRIPT PART
+:b_dragoonrush
+wait_build 1 gateway
+wait_build 1 cybernetics_core
+give_money
+train 6 zealot
+train 6 dragoon
+attack_add 6 zealot
+attack_add 6 dragoon
+attack_prepare
+attack_do
+attack_clear
+goto a_dragoonrush
+
+; >> DARK TEMPLAR RUSH SCRIPT PART
+:b_darkrush
+wait_build 1 gateway
+wait_build 1 templar_archives
+give_money
+train 5 dark_templar
+attack_add 5 dark_templar
+attack_prepare
+attack_do
+attack_clear
+goto a_darkrush
+
+; >> CARRIER RUSH SCRIPT PART
+:b_carrierrush
+wait_build 1 stargate
+wait_build 1 fleet_beacon
+give_money
+train 3 carrier
+attack_add 3 carrier
+attack_prepare
+attack_do
+attack_clear
+goto a_carrierrush
+
+; >> ARBITER RUSH SCRIPT PART
+:b_arbiterrush
+wait_build 1 stargate
+wait_build 1 fleet_beacon
+wait_build 1 arbiter_tribunal
+give_money
+train 8 carrier
+train 2 arbiter
+attack_add 8 carrier
+attack_add 2 arbiter
+attack_prepare
+attack_do
+attack_clear
+goto a_arbiterrush
+
+; >> MASS OBSERVER SCRIPT PART
+:b_massobserver
+wait_build 1 robotics_facility
+wait_build 1 observatory
+give_money
+train 4 observer
+goto a_massobserver
+
+; >> MASS DARK TEMPLAR SCRIPT PART
+:b_massdark
+wait_build 1 gateway
+wait_build 1 templar_archives
+give_money
+train 10 dark_templar
+goto a_massdark
+
+; >> MASS SCOUT/REAVER SCRIPT PART
+:b_massreaver
+wait_build 1 stargate
+wait_build 1 robotics_support_bay
+wait_build 1 robotics_facility
+give_money
+train 12 scout
+train 8 reaver
+goto a_massreaver
+
+; >> MASS ARBITER SCRIPT PART
+:b_massarbiter
+wait_build 1 stargate
+wait_build 1 fleet_beacon
+wait_build 1 arbiter_tribunal
+give_money
+train 4 arbiter
+give_money
+train 6 carrier
+give_money
+train 12 carrier
+give_money
+train 24 carrier
+goto nomasscheck
+
+; >> EXPANSION A CODE
+:expacode
+start_town
+give_money
+build 1 nexus 50
+wait_build 1 nexus
+get_oldpeons 8
+build 4 probe 50
+wait_buildstart 4 probe
+build 5 probe 50
+wait_buildstart 5 probe
+build 6 probe 50
+wait_buildstart 6 probe
+build 1 pylon 50
+wait_buildstart 1 pylon
+
+give_money
+goto b_gatewayex
+:a_gatewayex
+
+give_money
+build 1 assimilator 50
+wait_buildstart 1 assimilator
+
+give_money
+goto b_forgeex
+:a_forgeex
+
+give_money
+
+goto b_startdefenseblockex
+:a_startdefenseblockex
+
+give_money
+build 5 pylon 50
+wait_buildstart 5 pylon
+goto b_cyberneticsex
+:a_cyberneticsex
+
+build 7 pylon 50
+wait_buildstart 7 pylon
+
+give_money
+build 9 pylon 50
+wait_buildstart 9 pylon
+goto b_cannon0ex
+:a_cannon0ex
+
+give_money
+goto b_robotics0ex
+:a_robotics0ex
+
+build 11 pylon 50
+wait_buildstart 11 pylon
+
+build 13 pylon 50
+wait_buildstart 13 pylon
+
+give_money
+goto b_templarex
+:a_templarex
+
+build 15 pylon 50
+wait_buildstart 15 pylon
+
+give_money
+build 17 pylon 50
+wait_buildstart 17 pylon
+goto b_robotics1ex
+:a_robotics1ex
+
+goto b_finaldefenseblockex
+:a_finaldefenseblockex
+
+give_money
+build 19 pylon 50
+wait_buildstart 19 pylon
+goto b_fleetex
+:a_fleetex
+
+give_money
+goto b_arbiterex
+:a_arbiterex
+
+stop
+
+:m_myfunding
+give_money
+wait 10
+goto m_myfunding
+
+:b_startdefenseblock
+defenseclear_gg
+defensebuild_gg 1 zealot
+defenseuse_gg 1 zealot
+defensebuild_gg 1 dragoon
+defenseuse_gg 1 dragoon
+defensebuild_gg 1 reaver
+defenseuse_gg 1 reaver
+defensebuild_gg 1 dark_templar
+defenseuse_gg 1 dark_templar
+defensebuild_gg 1 carrier
+defenseuse_gg 1 carrier
+defensebuild_gg 1 scout
+defenseuse_gg 1 scout
+defensebuild_gg 1 archon
+defenseuse_gg 1 archon
+defenseclear_ag
+defensebuild_ag 1 scout
+defenseuse_ag 1 scout
+defensebuild_ag 1 dragoon
+defenseuse_ag 1 dragoon
+defensebuild_ag 1 archon
+defenseuse_ag 1 archon
+defensebuild_ag 1 dark_archon
+defenseuse_ag 1 dark_archon
+defensebuild_ag 1 carrier
+defenseuse_ag 1 carrier
+defensebuild_aa 1 corsair
+defenseuse_aa 1 corsair
+defensebuild_aa 1 scout
+defenseuse_aa 1 scout
+defensebuild_aa 1 carrier
+defenseuse_aa 1 carrier
+defensebuild_ga 1 carrier
+defenseuse_ga 1 carrier
+defensebuild_ga 1 scout
+defenseuse_ga 1 scout
+goto a_startdefenseblock
+
+:b_finaldefenseblock
+defenseclear_gg
+defensebuild_gg 1 reaver
+defenseuse_gg 1 reaver
+defensebuild_gg 1 dark_templar
+defenseuse_gg 1 dark_templar
+defensebuild_gg 1 carrier
+defenseuse_gg 1 carrier
+defenseclear_ag
+defensebuild_ag 1 scout
+defenseuse_ag 1 scout
+defensebuild_ag 1 dragoon
+defenseuse_ag 1 dragoon
+defensebuild_ag 1 archon
+defenseuse_ag 1 archon
+defensebuild_ag 1 dark_archon
+defenseuse_ag 1 dark_archon
+defensebuild_ag 1 carrier
+defenseuse_ag 1 carrier
+defensebuild_aa 1 corsair
+defenseuse_aa 1 corsair
+defensebuild_aa 1 scout
+defenseuse_aa 1 scout
+defensebuild_aa 1 carrier
+defenseuse_aa 1 carrier
+defensebuild_ga 1 carrier
+defenseuse_ga 1 carrier
+defensebuild_ga 1 scout
+defenseuse_ga 1 scout
+goto a_finaldefenseblock
+
+:b_startdefenseblockex
+defenseclear_gg
+defensebuild_gg 1 zealot
+defenseuse_gg 1 zealot
+defensebuild_gg 1 dragoon
+defenseuse_gg 1 dragoon
+defensebuild_gg 1 reaver
+defenseuse_gg 1 reaver
+defensebuild_gg 1 dark_templar
+defenseuse_gg 1 dark_templar
+defensebuild_gg 1 carrier
+defenseuse_gg 1 carrier
+defensebuild_gg 1 scout
+defenseuse_gg 1 scout
+defensebuild_gg 1 archon
+defenseuse_gg 1 archon
+defenseclear_ag
+defensebuild_ag 1 scout
+defenseuse_ag 1 scout
+defensebuild_ag 1 dragoon
+defenseuse_ag 1 dragoon
+defensebuild_ag 1 archon
+defenseuse_ag 1 archon
+defensebuild_ag 1 dark_archon
+defenseuse_ag 1 dark_archon
+defensebuild_ag 1 carrier
+defenseuse_ag 1 carrier
+defensebuild_aa 1 corsair
+defenseuse_aa 1 corsair
+defensebuild_aa 1 scout
+defenseuse_aa 1 scout
+defensebuild_aa 1 carrier
+defenseuse_aa 1 carrier
+defensebuild_ga 1 carrier
+defenseuse_ga 1 carrier
+defensebuild_ga 1 scout
+defenseuse_ga 1 scout
+goto a_startdefenseblockex
+
+:b_finaldefenseblockex
+defenseclear_gg
+defensebuild_gg 1 reaver
+defenseuse_gg 1 reaver
+defensebuild_gg 1 dark_templar
+defenseuse_gg 1 dark_templar
+defensebuild_gg 1 carrier
+defenseuse_gg 1 carrier
+defenseclear_ag
+defensebuild_ag 1 scout
+defenseuse_ag 1 scout
+defensebuild_ag 1 dragoon
+defenseuse_ag 1 dragoon
+defensebuild_ag 1 archon
+defenseuse_ag 1 archon
+defensebuild_ag 1 dark_archon
+defenseuse_ag 1 dark_archon
+defensebuild_ag 1 carrier
+defenseuse_ag 1 carrier
+defensebuild_aa 1 corsair
+defenseuse_aa 1 corsair
+defensebuild_aa 1 scout
+defenseuse_aa 1 scout
+defensebuild_aa 1 carrier
+defenseuse_aa 1 carrier
+defensebuild_ga 1 carrier
+defenseuse_ga 1 carrier
+defensebuild_ga 1 scout
+defenseuse_ga 1 scout
+goto a_finaldefenseblockex
+
+:m_rushcheck
+
+give_money
+
+notowns_jump arbiter_tribunal carriercheck
+give_money
+resources_jump 2000 2000 b_arbiterrush
+:a_arbiterrush
+
+:carriercheck
+notowns_jump fleet_beacon darkcheck
+give_money
+resources_jump 1000 700 b_carrierrush
+:a_carrierrush
+
+:darkcheck
+notowns_jump templar_archives dragooncheck
+give_money
+resources_jump 600 400 b_darkrush
+:a_darkrush
+
+:dragooncheck
+notowns_jump cybernetics_core observercheck
+give_money
+resources_jump 1350 300 b_dragoonrush
+:a_dragoonrush
+
+:observercheck
+notowns_jump robotics_facility zealotcheck
+notowns_jump observatory zealotcheck
+give_money
+resources_jump 25 75 b_observerrush
+:a_observerrush
+
+:zealotcheck
+notowns_jump gateway nocheck
+give_money
+resources_jump 700 0 b_zealotrush
+:a_zealotrush
+
+:nocheck
+stop
+
+:m_bigattackcheck
+
+give_money
+
+notowns_jump arbiter_tribunal massreavercheck
+give_money
+resources_jump 2000 2000 b_massarbiter
+
+:massreavercheck
+notowns_jump robotics_support_bay massdarkcheck
+notowns_jump stargate massdarkcheck
+give_money
+resources_jump 2000 1000 b_massreaver
+:a_massreaver
+
+:massdarkcheck
+notowns_jump templar_archives massobservercheck
+give_money
+resources_jump 1250 1000 b_massdark
+:a_massdark
+
+:massobservercheck
+notowns_jump robotics_facility nomasscheck
+notowns_jump observatory nomasscheck
+give_money
+resources_jump 100 300 b_massobserver
+:a_massobserver
+
+:nomasscheck
+stop
+
+:r_groundupgrades
+wait_build 3 forge
+give_money
+upgrade 1 p_ground_weapon 70
+upgrade 1 p_armor 70
+upgrade 1 p_plasma_shield 70
+wait 2700
+wait_build 1 cybernetics_core
+give_money
+upgrade 2 p_plasma_shield 70
+wait 3600
+wait_build 1 templar_archives
+give_money
+upgrade 2 p_ground_weapon 70
+upgrade 2 p_armor 70
+upgrade 3 p_plasma_shield 70
+wait 4500
+give_money
+upgrade 3 p_ground_weapon 70
+upgrade 3 p_armor 70
+stop
+
+:r_cybupgrades
+wait_build 2 cybernetics_core
+give_money
+upgrade 1 dragoon_range 70
+upgrade 1 p_air_weapon 70
+wait 2700
+give_money
+upgrade 1 p_plating 70
+stop
+
+:r_roboticsupgrades
+wait_build 1 robotics_support_bay
+give_money
+upgrade 1 shuttle_speed 70
+wait 3600
+give_money
+upgrade 1 reaver_capacity 70
+wait 3600
+give_money
+upgrade 1 scarab_damage 70
+stop
+
+:r_observerupgrades
+wait_build 1 observatory
+give_money
+upgrade 1 observer_speed 70
+wait 2700
+give_money
+upgrade 1 observer_sight 70
+stop
+
+:r_templarupgrades
+wait_build 1 citadel_of_adun
+give_money
+upgrade 1 zealot_speed 70
+wait_build 1 templar_archives
+give_money
+tech psionic_storm 70
+wait 2700
+give_money
+tech maelstrom 70
+wait 2700
+give_money
+upgrade 1 templar_mana 70
+wait 2700
+give_money
+upgrade 1 dark_archon_mana 70
+wait 3600
+give_money
+tech mind_control 70
+stop
+
+:r_airupgrades
+wait_build 1 fleet_beacon
+give_money
+upgrade 1 carrier_capacity 70
+upgrade 2 p_air_weapon 70
+upgrade 2 p_plating 70
+wait 3600
+give_money
+tech disruption_web 70
+upgrade 3 p_air_weapon 70
+upgrade 3 p_plating 70
+wait 4500
+give_money
+upgrade 1 scout_speed 70
+wait 3600
+give_money
+upgrade 1 corsair_mana 70
+wait 3600
+give_money
+upgrade 1 scout_sight 70
+wait_build 1 arbiter_tribunal
+give_money
+tech statis_field 70
+wait 4500
+give_money
+upgrade 1 arbiter_mana 70
+stop

@@ -1,0 +1,812 @@
+;Created By Dark_Oppressor
+script_name Zerg Expansion Custom Level
+script_id ZMCx
+
+start_town
+groundmap_jump groundmap
+goto airmap
+:groundmap
+transports_off
+:airmap
+farms_notiming
+
+define_max 100 defiler
+define_max 100 devourer
+define_max 100 guardian
+define_max 100 hydralisk
+define_max 100 infested_terran
+define_max 100 lurker
+define_max 100 mutalisk
+define_max 6 queen
+define_max 100 scourge
+define_max 50 ultralisk
+define_max 100 zergling
+define_max 100 drone
+define_max 100 overlord
+
+give_money
+
+build 1 hatchery 150
+wait_build 1 hatchery
+build 4 drone 130
+wait_build 4 drone
+
+multirun m_myfunding
+multirun r_defilermoundupgrades
+multirun r_ultraliskcavernupgrades
+multirun r_airupgrades
+multirun r_queennestupgrades
+multirun r_hydraliskdenupgrades
+multirun r_hatcheryupgrades
+multirun r_groundupgrades
+multirun r_spawningpoolupgrades
+
+build 5 drone 80
+wait_buildstart 5 drone
+build 6 drone 80
+wait_buildstart 6 drone
+build 1 overlord 80
+wait_buildstart 1 overlord
+build 7 drone 80
+wait_buildstart 7 drone
+build 8 drone 80
+wait_buildstart 8 drone
+
+goto b_spawningpool
+:a_spawningpool
+
+farms_timing
+
+build 9 drone 80
+wait_buildstart 9 drone
+build 10 drone 80
+wait_buildstart 10 drone
+build 1 extractor 80
+wait_buildstart 1 extractor
+
+give_money
+build 3 hatchery 80
+wait_buildstart 3 hatchery
+
+give_money
+build 10 drone 80
+wait_buildstart 10 drone
+
+multirun m_rushcheck
+
+goto b_startdefenseblock
+:a_startdefenseblock
+
+give_money
+build 5 hatchery 80
+wait_buildstart 5 hatchery
+
+goto b_hydraliskden
+:a_hydraliskden
+
+give_money
+build 12 drone 80
+wait_buildstart 12 drone
+
+build 5 overlord 80
+wait_buildstart 5 overlord
+
+multirun m_rushcheck
+
+goto b_evochamber
+:a_evochamber
+
+give_money
+build 12 drone 80
+wait_buildstart 12 drone
+
+give_money
+build 7 hatchery 80
+wait_buildstart 7 hatchery
+
+give_money
+build 14 drone 80
+wait_buildstart 14 drone
+
+goto b_lair
+:a_lair
+
+multirun m_rushcheck
+
+build 7 overlord 80
+wait_buildstart 7 overlord
+
+build 9 overlord 80
+wait_buildstart 9 overlord
+goto b_spire
+:a_spire
+
+multirun m_rushcheck
+
+give_money
+build 14 drone 80
+wait_buildstart 14 drone
+
+goto b_hive
+:a_hive
+
+build 11 overlord 80
+wait_buildstart 11 overlord
+
+goto b_greaterspire
+:a_greaterspire
+
+build 13 overlord 80
+wait_buildstart 13 overlord
+
+multirun m_rushcheck
+
+give_money
+build 14 drone 80
+wait_buildstart 14 drone
+
+give_money
+build 10 hatchery 80
+wait_buildstart 10 hatchery
+
+goto b_ultraliskcavern
+:a_ultraliskcavern
+
+give_money
+build 14 drone 80
+wait_buildstart 14 drone
+
+build 15 overlord 80
+wait_buildstart 15 overlord
+
+build 17 overlord 80
+wait_buildstart 17 overlord
+
+multirun m_rushcheck
+
+goto b_finaldefenseblock
+:a_finaldefenseblock
+
+build 19 overlord 80
+wait_buildstart 19 overlord
+
+build 21 overlord 80
+wait_buildstart 21 overlord
+
+give_money
+expand 1 expacode
+
+build 23 overlord 80
+wait_buildstart 23 overlord
+
+multirun m_rushcheck
+
+:repeatmain
+send_suicide 0
+
+multirun m_bigattackcheck
+wait 2000
+
+goto repeatmain
+
+; >> SPAWNINGPOOL SCRIPT PART
+:b_spawningpool
+build 1 spawning_pool 80
+wait_buildstart 1 spawning_pool
+build 2 overlord 80
+wait_buildstart 2 overlord
+build 1 evolution_chamber 80
+wait_buildstart 1 evolution_chamber
+goto a_spawningpool
+
+; >> HYDRALISKDEN SCRIPT PART
+:b_hydraliskden
+wait_build 1 spawning_pool
+build 1 hydralisk_den 80
+wait_buildstart 1 hydralisk_den
+goto a_hydraliskden
+
+; >> EVO CHAMBER SCRIPT PART
+:b_evochamber
+wait_build 1 hatchery
+build 3 evolution_chamber 80
+wait_buildstart 3 evolution_chamber
+goto a_evochamber
+
+; >> LAIR SCRIPT PART
+:b_lair
+wait_build 1 hatchery
+wait_build 1 spawning_pool
+build 1 lair 80
+wait_buildstart 1 lair
+goto a_lair
+
+; >> SPIRE SCRIPT PART
+:b_spire
+wait_build 1 lair
+build 2 spire 80
+wait_buildstart 2 spire
+build 1 queen_nest 80
+wait_buildstart 1 queen_nest
+goto a_spire
+
+; >> HIVE SCRIPT PART
+:b_hive
+wait_build 1 lair
+wait_build 1 queen_nest
+build 1 hive 80
+wait_buildstart 1 hive
+goto a_hive
+
+; >> GREATERSPIRE SCRIPT PART
+:b_greaterspire
+wait_build 2 spire
+wait_build 1 hive
+build 2 greater_spire 80
+wait_buildstart 2 greater_spire
+goto a_greaterspire
+
+; >> ULTRALISKCAVERN SCRIPT PART
+:b_ultraliskcavern
+wait_build 1 hive
+build 1 ultralisk_cavern 80
+wait_buildstart 1 ultralisk_cavern
+build 1 defiler_mound 80
+wait_buildstart 1 defiler_mound
+goto a_ultraliskcavern
+
+; >> SPAWNINGPOOL SCRIPT PART
+:b_spawningpoolex
+build 1 spawning_pool 50
+wait_buildstart 1 spawning_pool
+build 2 overlord 50
+wait_buildstart 2 overlord
+build 1 evolution_chamber 50
+wait_buildstart 1 evolution_chamber
+goto a_spawningpoolex
+
+; >> HYDRALISKDEN SCRIPT PART
+:b_hydraliskdenex
+wait_build 1 spawning_pool
+build 1 hydralisk_den 50
+wait_buildstart 1 hydralisk_den
+goto a_hydraliskdenex
+
+; >> LAIR SCRIPT PART
+:b_lairex
+wait_build 1 hatchery
+wait_build 1 spawning_pool
+build 1 lair 50
+wait_buildstart 1 lair
+goto a_lairex
+
+; >> SPIRE SCRIPT PART
+:b_spireex
+wait_build 1 lair
+build 1 spire 50
+wait_buildstart 1 spire
+build 1 queen_nest 50
+wait_buildstart 1 queen_nest
+goto a_spireex
+
+; >> HIVE SCRIPT PART
+:b_hiveex
+wait_build 1 lair
+wait_build 1 queen_nest
+build 1 hive 50
+wait_buildstart 1 hive
+goto a_hiveex
+
+; >> GREATERSPIRE SCRIPT PART
+:b_greaterspireex
+wait_build 1 spire
+wait_build 1 hive
+build 1 greater_spire 50
+wait_buildstart 1 greater_spire
+goto a_greaterspireex
+
+; >> ULTRALISKCAVERN SCRIPT PART
+:b_ultraliskcavernex
+wait_build 1 hive
+build 1 ultralisk_cavern 50
+wait_buildstart 1 ultralisk_cavern
+build 1 defiler_mound 50
+wait_buildstart 1 defiler_mound
+goto a_ultraliskcavernex
+
+; >> ZERGLING RUSH SCRIPT PART
+:b_zerglingrush
+wait_build 1 spawning_pool
+give_money
+train 6 zergling
+attack_add 6 zergling
+attack_prepare
+attack_do
+attack_clear
+goto a_zerglingrush
+
+; >> HYDRALISK RUSH SCRIPT PART
+:b_hydraliskrush
+wait_build 1 hydralisk_den
+give_money
+train 5 hydralisk
+attack_add 5 hydralisk
+attack_prepare
+attack_do
+attack_clear
+goto a_hydraliskrush
+
+; >> MUTALISK RUSH SCRIPT PART
+:b_mutaliskrush
+wait_build 1 spire
+give_money
+train 6 mutalisk
+attack_add 6 mutalisk
+attack_prepare
+attack_do
+attack_clear
+goto a_mutaliskrush
+
+; >> GUARDIAN RUSH SCRIPT PART
+:b_guardianrush
+wait_build 1 greater_spire
+give_money
+train 4 guardian
+attack_add 4 guardian
+attack_prepare
+attack_do
+attack_clear
+goto a_guardianrush
+
+; >> LURKER RUSH SCRIPT PART
+:b_lurkerrush
+wait_build 1 lair
+give_money
+train 3 lurker
+attack_add 3 lurker
+attack_prepare
+attack_do
+attack_clear
+goto a_lurkerrush
+
+; >> MASS HYDRALISK SCRIPT PART
+:b_masshydralisk
+wait_build 1 hydralisk_den
+give_money
+train 10 hydralisk
+goto a_masshydralisk
+
+; >> MASS MUTALISK SCRIPT PART
+:b_massmutalisk
+wait_build 1 spire
+train 20 mutalisk
+train 2 scourge
+goto a_massmutalisk
+
+; >> MASS LURKER SCRIPT PART
+:b_masslurker
+wait_build 1 lair
+train 15 lurker
+goto a_masslurker
+
+; >> MASS ULTRALISK SCRIPT PART
+:b_massultralisk
+wait_build 1 ultralisk_cavern
+train 10 ultralisk
+goto a_massultralisk
+
+; >> MASS DEFILER SCRIPT PART
+:b_massdefiler
+wait_build 1 defiler_mound
+wait_build 1 greater_spire
+train 1 defiler
+give_money
+train 12 devourer
+give_money
+train 12 guardian
+give_money
+train 24 devourer
+give_money
+train 24 guardian
+goto nomasscheck
+
+; >> EXPANSION A CODE
+:expacode
+start_town
+build 1 hatchery 50
+wait_build 1 hatchery
+get_oldpeons 8
+give_money
+build 4 drone 50
+wait_buildstart 4 drone
+build 5 drone 50
+wait_buildstart 5 drone
+build 6 drone 50
+wait_buildstart 6 drone
+build 1 overlord 50
+wait_buildstart 1 overlord
+build 7 drone 50
+wait_buildstart 7 drone
+build 8 drone 50
+wait_buildstart 8 drone
+
+goto b_spawningpoolex
+:a_spawningpoolex
+
+give_money
+build 9 drone 50
+wait_buildstart 9 drone
+build 10 drone 50
+wait_buildstart 10 drone
+build 1 extractor 50
+wait_buildstart 1 extractor
+
+goto b_hydraliskdenex
+:a_hydraliskdenex
+
+give_money
+build 10 drone 50
+wait_buildstart 10 drone
+
+give_money
+
+goto b_startdefenseblockex
+:a_startdefenseblockex
+
+give_money
+build 2 hatchery 50
+wait_buildstart 2 hatchery
+
+give_money
+build 10 drone 50
+wait_buildstart 10 drone
+
+build 5 overlord 50
+wait_buildstart 5 overlord
+goto b_lairex
+:a_lairex
+
+give_money
+build 10 drone 50
+wait_buildstart 10 drone
+
+give_money
+build 4 hatchery 50
+wait_buildstart 4 hatchery
+
+build 7 overlord 50
+wait_buildstart 7 overlord
+
+give_money
+build 6 hatchery 50
+wait_buildstart 6 hatchery
+
+build 9 overlord 50
+wait_buildstart 9 overlord
+goto b_spireex
+:a_spireex
+
+give_money
+build 10 drone 50
+wait_buildstart 10 drone
+
+goto b_hiveex
+:a_hiveex
+
+build 11 overlord 50
+wait_buildstart 11 overlord
+
+goto b_greaterspireex
+:a_greaterspireex
+
+build 13 overlord 50
+wait_buildstart 13 overlord
+
+multirun m_rushcheck
+
+give_money
+build 8 hatchery 50
+wait_buildstart 8 hatchery
+
+give_money
+build 10 drone 50
+wait_buildstart 10 drone
+
+goto b_ultraliskcavernex
+:a_ultraliskcavernex
+
+build 15 overlord 50
+wait_buildstart 15 overlord
+
+build 17 overlord 50
+wait_buildstart 17 overlord
+
+goto b_finaldefenseblockex
+:a_finaldefenseblockex
+
+give_money
+build 10 hatchery 50
+wait_buildstart 10 hatchery
+
+build 19 overlord 50
+wait_buildstart 19 overlord
+
+stop
+
+:m_myfunding
+give_money
+wait 500
+goto m_myfunding
+
+:b_startdefenseblock
+defenseclear_gg
+defensebuild_gg 1 zergling
+defenseuse_gg 1 zergling
+defensebuild_gg 1 hydralisk
+defenseuse_gg 1 hydralisk
+defensebuild_gg 1 ultralisk
+defenseuse_gg 1 ultralisk
+defensebuild_gg 1 guardian
+defenseuse_gg 1 guardian
+defensebuild_gg 1 mutalisk
+defenseuse_gg 1 mutalisk
+defensebuild_gg 1 lurker
+defenseuse_gg 1 lurker
+defenseclear_ag
+defensebuild_ag 1 mutalisk
+defenseuse_ag 1 mutalisk
+defensebuild_ag 1 hydralisk
+defenseuse_ag 1 hydralisk
+defensebuild_ag 1 guardian
+defenseuse_ag 1 guardian
+defensebuild_aa 1 devourer
+defenseuse_aa 1 devourer
+defensebuild_aa 1 mutalisk
+defenseuse_aa 1 mutalisk
+defensebuild_ga 1 mutalisk
+defenseuse_ga 1 mutalisk
+goto a_startdefenseblock
+
+:b_finaldefenseblock
+defenseclear_gg
+defensebuild_gg 1 ultralisk
+defenseuse_gg 1 ultralisk
+defensebuild_gg 1 hydralisk
+defenseuse_gg 1 hydralisk
+defensebuild_gg 1 guardian
+defenseuse_gg 1 guardian
+defenseclear_ag
+defensebuild_ag 1 mutalisk
+defenseuse_ag 1 mutalisk
+defensebuild_ag 1 hydralisk
+defenseuse_ag 1 hydralisk
+defensebuild_ag 1 guardian
+defenseuse_ag 1 guardian
+defensebuild_aa 1 devourer
+defenseuse_aa 1 devourer
+defensebuild_aa 1 mutalisk
+defenseuse_aa 1 mutalisk
+defensebuild_ga 1 mutalisk
+defenseuse_ga 1 mutalisk
+goto a_finaldefenseblock
+
+:b_startdefenseblockex
+defenseclear_gg
+defensebuild_gg 1 zergling
+defenseuse_gg 1 zergling
+defensebuild_gg 1 hydralisk
+defenseuse_gg 1 hydralisk
+defensebuild_gg 1 ultralisk
+defenseuse_gg 1 ultralisk
+defensebuild_gg 1 guardian
+defenseuse_gg 1 guardian
+defensebuild_gg 1 mutalisk
+defenseuse_gg 1 mutalisk
+defensebuild_gg 1 lurker
+defenseuse_gg 1 lurker
+defenseclear_ag
+defensebuild_ag 1 mutalisk
+defenseuse_ag 1 mutalisk
+defensebuild_ag 1 hydralisk
+defenseuse_ag 1 hydralisk
+defensebuild_ag 1 guardian
+defenseuse_ag 1 guardian
+defensebuild_aa 1 devourer
+defenseuse_aa 1 devourer
+defensebuild_aa 1 mutalisk
+defenseuse_aa 1 mutalisk
+defensebuild_ga 1 mutalisk
+defenseuse_ga 1 mutalisk
+goto a_startdefenseblockex
+
+:b_finaldefenseblockex
+defenseclear_gg
+defensebuild_gg 1 ultralisk
+defenseuse_gg 1 ultralisk
+defensebuild_gg 1 hydralisk
+defenseuse_gg 1 hydralisk
+defensebuild_gg 1 guardian
+defenseuse_gg 1 guardian
+defenseclear_ag
+defensebuild_ag 1 mutalisk
+defenseuse_ag 1 mutalisk
+defensebuild_ag 1 hydralisk
+defenseuse_ag 1 hydralisk
+defensebuild_ag 1 guardian
+defenseuse_ag 1 guardian
+defensebuild_aa 1 devourer
+defenseuse_aa 1 devourer
+defensebuild_aa 1 mutalisk
+defenseuse_aa 1 mutalisk
+defensebuild_ga 1 mutalisk
+defenseuse_ga 1 mutalisk
+goto a_finaldefenseblockex
+
+:m_rushcheck
+
+notowns_jump lair guardiancheck
+resources_jump 375 300 b_lurkerrush
+:a_lurkerrush
+
+:guardiancheck
+notowns_jump greater_spire mutaliskcheck
+resources_jump 600 800 b_guardianrush
+:a_guardianrush
+
+:mutaliskcheck
+notowns_jump spire hydraliskcheck
+resources_jump 600 600 b_mutaliskrush
+:a_mutaliskrush
+
+:hydraliskcheck
+notowns_jump hydralisk_den zerglingcheck
+resources_jump 375 125 b_hydraliskrush
+:a_hydraliskrush
+
+:zerglingcheck
+notowns_jump spawning_pool nocheck
+resources_jump 300 0 b_zerglingrush
+:a_zerglingrush
+
+:nocheck
+stop
+
+:m_bigattackcheck
+
+notowns_jump defiler_mound massultraliskcheck
+resources_jump 2000 2000 b_massdefiler
+
+:massultraliskcheck
+notowns_jump ultralisk_cavern masslurkercheck
+resources_jump 2000 2000 b_massultralisk
+:a_massultralisk
+
+:masslurkercheck
+notowns_jump lair massmutaliskcheck
+resources_jump 2000 2000 b_masslurker
+:a_masslurker
+
+:massmutaliskcheck
+notowns_jump spire masshydraliskcheck
+resources_jump 2000 2000 b_massmutalisk
+:a_massmutalisk
+
+:masshydraliskcheck
+notowns_jump hydralisk_den nomasscheck
+resources_jump 750 250 b_masshydralisk
+:a_masshydralisk
+
+:nomasscheck
+stop
+
+:r_spawningpoolupgrades
+wait_build 1 spawning_pool
+give_money
+upgrade 1 zergling_speed 70
+wait 3600
+give_money
+upgrade 1 zergling_attack 70
+stop
+
+:r_groundupgrades
+wait_build 3 evolution_chamber
+give_money
+upgrade 1 z_melee_attack 70
+upgrade 1 z_missile_attack 70
+upgrade 1 z_carapace 70
+wait 2700
+wait_build 1 lair
+wait_build 3 evolution_chamber
+give_money
+upgrade 2 z_melee_attack 70
+upgrade 2 z_missile_attack 70
+upgrade 2 z_carapace 70
+wait 3600
+wait_build 1 hive
+wait_build 3 evolution_chamber
+give_money
+upgrade 3 z_melee_attack 70
+upgrade 3 z_missile_attack 70
+upgrade 3 z_carapace 70
+stop
+
+:r_hatcheryupgrades
+wait_build 1 hatchery
+give_money
+tech burrowing 70
+wait 3600
+wait_build 1 lair
+give_money
+upgrade 1 overlord_speed 70
+wait 3600
+give_money
+upgrade 1 overlord_capacity 70
+wait 3600
+give_money
+upgrade 1 overlord_sight 70
+stop
+
+:r_hydraliskdenupgrades
+wait_build 1 hydralisk_den
+give_money
+upgrade 1 hydralisk_range 70
+wait 3600
+give_money
+upgrade 1 hydralisk_speed 70
+wait 3600
+wait_build 1 lair
+wait_build 1 hydralisk_den
+give_money
+tech lurker_aspect 70
+stop
+
+:r_queennestupgrades
+wait_build 1 queen_nest
+give_money
+tech spawn_broodling 70
+wait 3600
+give_money
+tech ensnare 70
+wait 3600
+give_money
+upgrade 1 queen_mana 70
+stop
+
+:r_airupgrades
+wait_build 2 spire
+give_money
+upgrade 1 z_flyer_attack 70
+upgrade 1 z_flyer_carapace 70
+wait 2700
+wait_build 2 greater_spire
+give_money
+upgrade 2 z_flyer_attack 70
+upgrade 2 z_flyer_carapace 70
+wait 3600
+wait_build 1 hive
+wait_build 2 greater_spire
+give_money
+upgrade 3 z_flyer_attack 70
+upgrade 3 z_flyer_carapace 70
+stop
+
+:r_ultraliskcavernupgrades
+wait_build 1 ultralisk_cavern
+give_money
+upgrade 1 ultralisk_speed 70
+wait 3600
+give_money
+upgrade 1 ultralisk_armor 70
+stop
+
+:r_defilermoundupgrades
+wait_build 1 defiler_mound
+give_money
+tech plague 70
+wait 3600
+give_money
+tech consume 70
+wait 3600
+give_money
+upgrade 1 defiler_mana 70
+stop

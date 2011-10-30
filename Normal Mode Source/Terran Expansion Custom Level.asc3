@@ -1,0 +1,930 @@
+;Created By Dark_Oppressor
+script_name Terran Expansion Custom Level
+script_id TMCx
+
+start_town
+groundmap_jump groundmap
+goto airmap
+:groundmap
+transports_off
+:airmap
+farms_notiming
+
+define_max 33 battlecruiser
+define_max 100 dropship
+define_max 100 firebat
+define_max 100 ghost
+define_max 100 goliath
+define_max 100 marine
+define_max 100 medic
+define_max 5 nuclear_missile
+define_max 100 science_vessel
+define_max 100 siege_tank
+define_max 66 valkyrie
+define_max 100 vulture
+define_max 100 wraith
+define_max 28 scv
+
+give_money
+
+build 1 command_center 150
+wait_build 1 command_center
+build 4 scv 130
+wait_build 4 scv
+
+multirun m_myfunding
+multirun r_infantryupgrades
+multirun r_armoryupgrades
+multirun r_physicslabupgrades
+multirun r_covertopsupgrades
+multirun r_sciencefacilityupgrades
+multirun r_machineshopupgrades
+multirun r_controltowerupgrades
+multirun r_academyupgrades
+
+build 5 scv 80
+wait_buildstart 5 scv
+build 6 scv 80
+wait_buildstart 6 scv
+build 1 supply_depot 80
+wait_buildstart 1 supply_depot
+build 7 scv 80
+wait_buildstart 7 scv
+build 8 scv 80
+wait_buildstart 8 scv
+
+goto b_barracks
+:a_barracks
+
+farms_timing
+
+build 9 scv 80
+wait_buildstart 9 scv
+build 10 scv 80
+wait_buildstart 10 scv
+build 1 refinery 80
+wait_buildstart 1 refinery
+
+goto b_engineeringbay
+:a_engineeringbay
+
+build 11 scv 80
+wait_buildstart 11 scv
+
+multirun m_rushcheck
+
+goto b_startdefenseblock
+:a_startdefenseblock
+
+build 2 command_center 80
+wait_buildstart 2 command_center
+
+build 14 scv 80
+wait_buildstart 14 scv
+
+build 5 supply_depot 80
+wait_buildstart 5 supply_depot
+goto b_academy
+:a_academy
+
+build 16 scv 80
+wait_buildstart 16 scv
+
+build 18 scv 80
+wait_buildstart 18 scv
+
+build 7 supply_depot 80
+wait_buildstart 7 supply_depot
+
+build 20 scv 80
+wait_buildstart 20 scv
+
+build 9 supply_depot 80
+wait_buildstart 9 supply_depot
+
+multirun m_rushcheck
+
+goto b_factory0
+:a_factory0
+
+goto b_armory
+:a_armory
+
+build 11 supply_depot 80
+wait_buildstart 11 supply_depot
+
+build 13 supply_depot 80
+wait_buildstart 13 supply_depot
+
+multirun m_rushcheck
+
+build 15 supply_depot 80
+wait_buildstart 15 supply_depot
+
+build 17 supply_depot 80
+wait_buildstart 17 supply_depot
+goto b_factory1
+:a_factory1
+
+goto b_finaldefenseblock
+:a_finaldefenseblock
+
+build 19 supply_depot 80
+wait_buildstart 19 supply_depot
+goto b_starport
+:a_starport
+
+multirun m_rushcheck
+
+goto b_comsatstation
+:a_comsatstation
+
+build 21 supply_depot 80
+wait_buildstart 21 supply_depot
+
+goto b_ghost
+:a_ghost
+
+goto b_nuke
+:a_nuke
+
+give_money
+expand 1 expacode
+
+build 23 supply_depot 80
+wait_buildstart 23 supply_depot
+
+goto b_battlecruiser
+:a_battlecruiser
+
+multirun m_rushcheck
+
+goto b_factory2
+:a_factory2
+
+:repeatmain
+send_suicide 0
+
+multirun m_bigattackcheck
+wait 2000
+
+goto repeatmain
+
+; >> BARRACKS SCRIPT PART
+:b_barracks
+build 1 barracks 80
+wait_buildstart 1 barracks
+build 2 supply_depot 80
+wait_buildstart 2 supply_depot
+build 3 barracks 80
+wait_buildstart 3 barracks
+goto a_barracks
+
+; >> ENGINEERINGBAY SCRIPT PART
+:b_engineeringbay
+build 2 engineering_bay 80
+wait_buildstart 2 engineering_bay
+goto a_engineeringbay
+
+; >> ACADEMY SCRIPT PART
+:b_academy
+wait_build 1 barracks
+build 1 academy 80
+wait_buildstart 1 academy
+build 4 barracks 80
+wait_buildstart 4 barracks
+goto a_academy
+
+; >> FACTORY 0 SCRIPT PART
+:b_factory0
+wait_build 1 academy
+build 1 factory 80
+wait_buildstart 1 factory
+goto a_factory0
+
+; >> ARMORY SCRIPT PART
+:b_armory
+wait_build 1 factory
+build 4 armory 80
+wait_buildstart 4 armory
+goto a_armory
+
+; >> FACTORY 1 SCRIPT PART
+:b_factory1
+wait_build 1 factory
+build 2 factory 80
+wait_build 2 factory
+build 2 machine_shop 80
+wait_buildstart 2 machine_shop
+goto a_factory1
+
+; >> FACTORY 2 SCRIPT PART
+:b_factory2
+wait_build 1 factory
+build 4 factory 80
+wait_build 4 factory
+build 4 machine_shop 80
+wait_buildstart 4 machine_shop
+goto a_factory2
+
+; >> STARPORT SCRIPT PART
+:b_starport
+wait_build 1 factory
+build 4 starport 80
+wait_build 4 starport
+build 4 control_tower 80
+wait_buildstart 4 control_tower
+goto a_starport
+
+; >> COMSATSTATION SCRIPT PART
+:b_comsatstation
+wait_build 1 academy
+build 3 command_center 80
+wait_build 3 command_center
+build 2 comsat_station 80
+wait_buildstart 2 comsat_station
+goto a_comsatstation
+
+; >> GHOST SCRIPT PART
+:b_ghost
+wait_build 1 starport
+build 1 science_facility 80
+wait_build 1 science_facility
+wait_build 1 control_tower
+place_guard science_vessel 0
+train 1 science_vessel
+build 1 covert_ops 80
+wait_buildstart 1 covert_ops
+goto a_ghost
+
+; >> BATTLECRUISER SCRIPT PART
+:b_battlecruiser
+wait_build 1 starport
+wait_build 1 science_facility
+build 2 science_facility 80
+wait_build 2 science_facility
+build 1 physics_lab 80
+wait_buildstart 1 physics_lab
+build 6 starport 80
+wait_build 6 starport
+build 6 control_tower 80
+wait_buildstart 6 control_tower
+goto a_battlecruiser
+
+; >> NUKE SCRIPT PART
+:b_nuke
+wait_build 1 science_facility
+wait_build 1 covert_ops
+wait_build 3 command_center
+build 6 command_center 80
+wait_build 6 command_center
+build 3 nuclear_silo 80
+wait_buildstart 3 nuclear_silo
+train 1 ghost
+goto a_nuke
+
+; >> BARRACKS SCRIPT PART
+:b_barracksex
+build 1 barracks 50
+wait_buildstart 1 barracks
+goto a_barracksex
+
+; >> ENGINEERINGBAY SCRIPT PART
+:b_engineeringbayex
+build 1 engineering_bay 50
+wait_buildstart 1 engineering_bay
+goto a_engineeringbayex
+
+; >> ACADEMY SCRIPT PART
+:b_academyex
+wait_build 1 barracks
+build 1 academy 50
+wait_buildstart 1 academy
+goto a_academyex
+
+; >> FACTORY 0 SCRIPT PART
+:b_factory0ex
+wait_build 1 academy
+build 1 factory 50
+wait_buildstart 1 factory
+goto a_factory0ex
+
+; >> ARMORY SCRIPT PART
+:b_armoryex
+wait_build 1 factory
+build 1 armory 50
+wait_buildstart 1 armory
+goto a_armoryex
+
+; >> FACTORY 1 SCRIPT PART
+:b_factory1ex
+wait_build 1 factory
+build 1 machine_shop 50
+wait_buildstart 1 machine_shop
+goto a_factory1ex
+
+; >> STARPORT SCRIPT PART
+:b_starportex
+wait_build 1 factory
+build 4 starport 50
+wait_build 4 starport
+build 4 control_tower 50
+wait_buildstart 4 control_tower
+goto a_starportex
+
+; >> COMSATSTATION SCRIPT PART
+:b_comsatstationex
+wait_build 1 command_center
+wait_build 1 academy
+build 1 comsat_station 50
+wait_buildstart 1 comsat_station
+goto a_comsatstationex
+
+; >> GHOST SCRIPT PART
+:b_ghostex
+wait_build 1 starport
+build 1 science_facility 50
+wait_build 1 science_facility
+build 1 covert_ops 50
+wait_buildstart 1 covert_ops
+goto a_ghostex
+
+; >> BATTLECRUISER SCRIPT PART
+:b_battlecruiserex
+wait_build 1 starport
+wait_build 1 science_facility
+build 2 science_facility 50
+wait_build 2 science_facility
+build 1 physics_lab 50
+wait_buildstart 1 physics_lab
+goto a_battlecruiserex
+
+; >> NUKE SCRIPT PART
+:b_nukeex
+wait_build 1 science_facility
+wait_build 1 covert_ops
+wait_build 3 command_center
+give_money
+build 2 command_center 50
+wait_build 2 command_center
+build 2 nuclear_silo 50
+wait_buildstart 2 nuclear_silo
+goto a_nukeex
+
+; >> MARINE RUSH SCRIPT PART
+:b_marinerush
+wait_build 1 barracks
+give_money
+train 10 marine
+attack_add 10 marine
+attack_prepare
+attack_do
+attack_clear
+goto a_marinerush
+
+; >> SV RUSH SCRIPT PART
+:b_svrush
+wait_build 1 control_tower
+wait_build 1 science_facility
+give_money
+train 1 science_vessel
+attack_add 1 science_vessel
+attack_prepare
+attack_do
+attack_clear
+goto a_svrush
+
+; >> FIREBAT RUSH SCRIPT PART
+:b_firebatrush
+wait_build 1 barracks
+wait_build 1 academy
+give_money
+train 8 marine
+train 4 firebat
+attack_add 8 marine
+attack_add 4 firebat
+attack_prepare
+attack_do
+attack_clear
+goto a_firebatrush
+
+; >> GHOST RUSH SCRIPT PART
+:b_ghostrush
+wait_build 1 barracks
+wait_build 1 academy
+wait_build 1 science_facility
+wait_build 1 covert_ops
+give_money
+train 2 medic
+train 5 ghost
+attack_add 2 medic
+attack_add 5 ghost
+attack_prepare
+attack_do
+attack_clear
+goto a_ghostrush
+
+; >> TANK RUSH SCRIPT PART
+:b_tankrush
+wait_build 1 factory
+wait_build 1 machine_shop
+give_money
+train 8 siege_tank
+attack_add 8 siege_tank
+attack_prepare
+attack_do
+attack_clear
+goto a_tankrush
+
+; >> WRAITH RUSH SCRIPT PART
+:b_wraithrush
+wait_build 1 starport
+give_money
+train 6 wraith
+attack_add 6 wraith
+attack_prepare
+attack_do
+attack_clear
+goto a_wraithrush
+
+; >> BCWRAITH RUSH SCRIPT PART
+:b_bcwraithrush
+wait_build 1 starport
+wait_build 1 control_tower
+wait_build 1 science_facility
+wait_build 1 physics_lab
+give_money
+train 4 battlecruiser
+attack_add 4 battlecruiser
+attack_prepare
+attack_do
+attack_clear
+goto a_bcwraithrush
+
+; >> MASS SV SCRIPT PART
+:b_masssv
+wait_build 1 starport
+wait_build 1 control_tower
+wait_build 1 science_facility
+give_money
+train 4 science_vessel
+goto a_masssv
+
+; >> MASS WRAITH SCRIPT PART
+:b_masswraith
+wait_build 1 starport
+train 10 wraith
+goto a_masswraith
+
+; >> MASS GOLIATH SCRIPT PART
+:b_massgoliath
+wait_build 1 factory
+wait_build 1 machine_shop
+wait_build 1 armory
+train 4 siege_tank
+train 4 goliath
+goto a_massgoliath
+
+; >> MASS BCWRAITH SCRIPT PART
+:b_massbcwraith
+wait_build 1 starport
+wait_build 1 control_tower
+wait_build 1 science_facility
+wait_build 1 physics_lab
+train 6 battlecruiser
+give_money
+train 12 battlecruiser
+give_money
+train 8 valkyrie
+give_money
+train 24 battlecruiser
+goto nomasscheck
+
+; >> EXPANSION A CODE
+:expacode
+start_town
+build 1 command_center 50
+wait_build 1 command_center
+get_oldpeons 8
+build 4 scv 50
+wait_buildstart 4 scv
+build 5 scv 50
+wait_buildstart 5 scv
+build 6 scv 50
+wait_buildstart 6 scv
+build 1 supply_depot 50
+wait_buildstart 1 supply_depot
+build 7 scv 50
+wait_buildstart 7 scv
+build 8 scv 50
+wait_buildstart 8 scv
+
+goto b_barracksex
+:a_barracksex
+
+build 1 refinery 50
+wait_buildstart 1 refinery
+
+goto b_engineeringbayex
+:a_engineeringbayex
+
+give_money
+
+goto b_startdefenseblockex
+:a_startdefenseblockex
+
+build 5 supply_depot 50
+wait_buildstart 5 supply_depot
+goto b_academyex
+:a_academyex
+
+build 7 supply_depot 50
+wait_buildstart 7 supply_depot
+
+goto b_factory0ex
+:a_factory0ex
+
+goto b_armoryex
+:a_armoryex
+
+goto b_factory1ex
+:a_factory1ex
+
+goto b_finaldefenseblockex
+:a_finaldefenseblockex
+
+goto b_starportex
+:a_starportex
+
+goto b_comsatstationex
+:a_comsatstationex
+
+goto b_ghostex
+:a_ghostex
+
+goto b_nukeex
+:a_nukeex
+
+goto b_battlecruiserex
+:a_battlecruiserex
+
+stop
+
+:m_myfunding
+give_money
+wait 500
+goto m_myfunding
+
+:b_startdefenseblock
+defenseclear_gg
+defensebuild_gg 1 marine
+defenseuse_gg 1 marine
+defensebuild_gg 1 firebat
+defenseuse_gg 1 firebat
+defensebuild_gg 1 siege_tank
+defenseuse_gg 1 siege_tank
+defensebuild_gg 1 ghost
+defenseuse_gg 1 ghost
+defensebuild_gg 1 battlecruiser
+defenseuse_gg 1 battlecruiser
+defensebuild_gg 1 wraith
+defenseuse_gg 1 wraith
+defensebuild_gg 1 goliath
+defenseuse_gg 1 goliath
+defenseclear_ag
+defensebuild_ag 1 wraith
+defenseuse_ag 1 wraith
+defensebuild_ag 1 firebat
+defenseuse_ag 1 firebat
+defensebuild_ag 1 goliath
+defenseuse_ag 1 goliath
+defensebuild_ag 1 medic
+defenseuse_ag 1 medic
+defensebuild_ag 1 battlecruiser
+defenseuse_ag 1 battlecruiser
+defensebuild_aa 1 valkyrie
+defenseuse_aa 1 valkyrie
+defensebuild_aa 1 wraith
+defenseuse_aa 1 wraith
+defensebuild_aa 1 battlecruiser
+defenseuse_aa 1 battlecruiser
+defensebuild_ga 1 battlecruiser
+defenseuse_ga 1 battlecruiser
+defensebuild_ga 1 wraith
+defenseuse_ga 1 wraith
+goto a_startdefenseblock
+
+:b_finaldefenseblock
+defenseclear_gg
+defensebuild_gg 1 siege_tank
+defenseuse_gg 1 siege_tank
+defensebuild_gg 1 ghost
+defenseuse_gg 1 ghost
+defensebuild_gg 1 battlecruiser
+defenseuse_gg 1 battlecruiser
+defenseclear_ag
+defensebuild_ag 1 wraith
+defenseuse_ag 1 wraith
+defensebuild_ag 1 firebat
+defenseuse_ag 1 firebat
+defensebuild_ag 1 goliath
+defenseuse_ag 1 goliath
+defensebuild_ag 1 medic
+defenseuse_ag 1 medic
+defensebuild_ag 1 battlecruiser
+defenseuse_ag 1 battlecruiser
+defensebuild_aa 1 valkyrie
+defenseuse_aa 1 valkyrie
+defensebuild_aa 1 wraith
+defenseuse_aa 1 wraith
+defensebuild_aa 1 battlecruiser
+defenseuse_aa 1 battlecruiser
+defensebuild_ga 1 battlecruiser
+defenseuse_ga 1 battlecruiser
+defensebuild_ga 1 wraith
+defenseuse_ga 1 wraith
+goto a_finaldefenseblock
+
+:b_startdefenseblockex
+defenseclear_gg
+defensebuild_gg 1 marine
+defenseuse_gg 1 marine
+defensebuild_gg 1 firebat
+defenseuse_gg 1 firebat
+defensebuild_gg 1 siege_tank
+defenseuse_gg 1 siege_tank
+defensebuild_gg 1 ghost
+defenseuse_gg 1 ghost
+defensebuild_gg 1 battlecruiser
+defenseuse_gg 1 battlecruiser
+defensebuild_gg 1 wraith
+defenseuse_gg 1 wraith
+defensebuild_gg 1 goliath
+defenseuse_gg 1 goliath
+defenseclear_ag
+defensebuild_ag 1 wraith
+defenseuse_ag 1 wraith
+defensebuild_ag 1 firebat
+defenseuse_ag 1 firebat
+defensebuild_ag 1 goliath
+defenseuse_ag 1 goliath
+defensebuild_ag 1 medic
+defenseuse_ag 1 medic
+defensebuild_ag 1 battlecruiser
+defenseuse_ag 1 battlecruiser
+defensebuild_aa 1 valkyrie
+defenseuse_aa 1 valkyrie
+defensebuild_aa 1 wraith
+defenseuse_aa 1 wraith
+defensebuild_aa 1 battlecruiser
+defenseuse_aa 1 battlecruiser
+defensebuild_ga 1 battlecruiser
+defenseuse_ga 1 battlecruiser
+defensebuild_ga 1 wraith
+defenseuse_ga 1 wraith
+goto a_startdefenseblockex
+
+:b_finaldefenseblockex
+defenseclear_gg
+defensebuild_gg 1 siege_tank
+defenseuse_gg 1 siege_tank
+defensebuild_gg 1 ghost
+defenseuse_gg 1 ghost
+defensebuild_gg 1 battlecruiser
+defenseuse_gg 1 battlecruiser
+defenseclear_ag
+defensebuild_ag 1 wraith
+defenseuse_ag 1 wraith
+defensebuild_ag 1 firebat
+defenseuse_ag 1 firebat
+defensebuild_ag 1 goliath
+defenseuse_ag 1 goliath
+defensebuild_ag 1 medic
+defenseuse_ag 1 medic
+defensebuild_ag 1 battlecruiser
+defenseuse_ag 1 battlecruiser
+defensebuild_aa 1 valkyrie
+defenseuse_aa 1 valkyrie
+defensebuild_aa 1 wraith
+defenseuse_aa 1 wraith
+defensebuild_aa 1 battlecruiser
+defenseuse_aa 1 battlecruiser
+defensebuild_ga 1 battlecruiser
+defenseuse_ga 1 battlecruiser
+defensebuild_ga 1 wraith
+defenseuse_ga 1 wraith
+goto a_finaldefenseblockex
+
+:m_rushcheck
+
+notowns_jump starport wraithcheck
+notowns_jump control_tower wraithcheck
+notowns_jump science_facility wraithcheck
+notowns_jump physics_lab wraithcheck
+resources_jump 1600 1200 b_bcwraithrush
+:a_bcwraithrush
+
+:wraithcheck
+notowns_jump starport tankcheck
+resources_jump 900 600 b_wraithrush
+:a_wraithrush
+
+:tankcheck
+notowns_jump factory ghostcheck
+notowns_jump machine_shop ghostcheck
+resources_jump 1200 800 b_tankrush
+:a_tankrush
+
+:ghostcheck
+notowns_jump barracks firebatcheck
+notowns_jump science_facility firebatcheck
+notowns_jump covert_ops firebatcheck
+resources_jump 225 425 b_ghostrush
+:a_ghostrush
+
+:firebatcheck
+notowns_jump academy svcheck
+notowns_jump barracks svcheck
+resources_jump 500 100 b_firebatrush
+:a_firebatrush
+
+:svcheck
+notowns_jump control_tower marinecheck
+notowns_jump science_facility marinecheck
+resources_jump 100 225 b_svrush
+:a_svrush
+
+:marinecheck
+notowns_jump barracks nocheck
+resources_jump 500 0 b_marinerush
+:a_marinerush
+
+:nocheck
+stop
+
+:m_bigattackcheck
+
+notowns_jump starport massgoliathcheck
+notowns_jump control_tower massgoliathcheck
+notowns_jump science_facility massgoliathcheck
+notowns_jump physics_lab massgoliathcheck
+resources_jump 2000 2000 b_massbcwraith
+
+:massgoliathcheck
+notowns_jump armory masswraithcheck
+notowns_jump factory masswraithcheck
+notowns_jump machine_shop masswraithcheck
+resources_jump 1000 600 b_massgoliath
+:a_massgoliath
+
+:masswraithcheck
+notowns_jump starport masssvcheck
+resources_jump 1500 1000 b_masswraith
+:a_masswraith
+
+:masssvcheck
+notowns_jump starport nomasscheck
+notowns_jump control_tower nomasscheck
+notowns_jump science_facility nomasscheck
+resources_jump 400 900 b_masssv
+:a_masssv
+
+:nomasscheck
+stop
+
+:r_infantryupgrades
+wait_build 2 engineering_bay
+give_money
+upgrade 1 t_infantry_armor 70
+upgrade 1 t_infantry_weapon 70
+wait 2700
+wait_build 1 science_facility
+wait_build 2 engineering_bay
+give_money
+upgrade 2 t_infantry_armor 70
+upgrade 2 t_infantry_weapon 70
+wait 3600
+wait_build 1 science_facility
+wait_build 2 engineering_bay
+give_money
+upgrade 3 t_infantry_armor 70
+upgrade 3 t_infantry_weapon 70
+stop
+
+:r_armoryupgrades
+wait_build 4 armory
+give_money
+upgrade 1 t_ship_plating 70
+upgrade 1 t_ship_weapon 70
+upgrade 1 t_vehicle_plating 70
+upgrade 1 t_vehicle_weapon 70
+wait 2700
+wait_build 1 science_facility
+wait_build 4 armory
+give_money
+upgrade 2 t_ship_plating 70
+upgrade 2 t_ship_weapon 70
+upgrade 2 t_vehicle_plating 70
+upgrade 2 t_vehicle_weapon 70
+wait 3600
+wait_build 1 science_facility
+wait_build 4 armory
+give_money
+upgrade 3 t_ship_plating 70
+upgrade 3 t_ship_weapon 70
+upgrade 3 t_vehicle_plating 70
+upgrade 3 t_vehicle_weapon 70
+stop
+
+:r_physicslabupgrades
+wait_build 1 physics_lab
+give_money
+upgrade 1 battlecruiser_mana 70
+wait 3600
+give_money
+tech yamato_gun 70
+stop
+
+:r_covertopsupgrades
+wait_build 1 science_facility
+wait_build 1 covert_ops
+give_money
+tech lockdown 70
+wait 3600
+wait_build 1 science_facility
+wait_build 1 covert_ops
+give_money
+tech personnel_cloaking 70
+wait 3600
+wait_build 1 science_facility
+wait_build 1 covert_ops
+give_money
+upgrade 1 ghost_sight 70
+wait 3600
+wait_build 1 science_facility
+wait_build 1 covert_ops
+give_money
+upgrade 1 ghost_mana 70
+stop
+
+:r_sciencefacilityupgrades
+wait_build 1 science_facility
+give_money
+tech emp_shockwave 70
+wait 3600
+give_money
+tech irradiate 70
+wait 3600
+give_money
+upgrade 1 science_vessel_mana 70
+stop
+
+:r_machineshopupgrades
+wait_build 1 factory
+wait_build 1 machine_shop
+give_money
+tech siege_mode 70
+wait 3600
+wait_build 1 factory
+wait_build 1 machine_shop
+give_money
+upgrade 1 vulture_speed 70
+wait 3600
+wait_build 1 factory
+wait_build 1 machine_shop
+give_money
+tech spider_mines 70
+wait 3600
+wait_build 1 factory
+wait_build 1 machine_shop
+wait_build 1 armory
+give_money
+upgrade 1 goliath_range 70
+stop
+
+:r_controltowerupgrades
+wait_build 1 control_tower
+give_money
+tech cloaking_field 70
+wait 3600
+give_money
+upgrade 1 wraith_mana 70
+stop
+
+:r_academyupgrades
+wait_build 1 academy
+give_money
+upgrade 1 marine_range 70
+wait 3600
+give_money
+tech stim_packs 70
+wait 3600
+give_money
+tech restoration 70
+wait 3600
+give_money
+tech optical_flare 70
+wait 3600
+give_money
+upgrade 1 medic_mana 70
+stop
