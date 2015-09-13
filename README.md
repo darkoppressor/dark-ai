@@ -1,5 +1,6 @@
 # dark-ai
 Makes the AI for StarCraft: Broodwar very scary!
+http://cheeseandbacon.org/
 
 An AI for StarCraft: Broodwar. Much more difficult than the regular StarCraft AI. This thing cheats like crazy, and is mainly designed for playing on money maps (Fastest Map, etc.)
 
